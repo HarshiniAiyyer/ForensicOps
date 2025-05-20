@@ -1,0 +1,63 @@
+schema: '2.0'
+stages:
+  prepare:
+    cmd: python src/prepare.py
+    deps:
+    - path: data/raw/states.csv
+      hash: md5
+      md5: 7ab8fadcd5042956ca9511ed83b197c7
+      size: 5704
+    - path: src/prepare.py
+      hash: md5
+      md5: 83fee8a2b750f83f145082168eee1edb
+      size: 1398
+    params:
+      params.yaml:
+        base.seed: 42
+        prepare.split: 0.2
+    outs:
+    - path: data/processed/train.csv
+      hash: md5
+      md5: c96dc59370168ddc6b895bb0a4ccb2cd
+      size: 3905
+    - path: data/processed/val.csv
+      hash: md5
+      md5: 97ab3e1690630ebe17a14f8d7a288358
+      size: 1324
+  train:
+    cmd: python src/train.py
+    deps:
+    - path: data/processed/train.csv
+      hash: md5
+      md5: c96dc59370168ddc6b895bb0a4ccb2cd
+      size: 3905
+    - path: data/processed/val.csv
+      hash: md5
+      md5: 97ab3e1690630ebe17a14f8d7a288358
+      size: 1324
+    - path: src/train.py
+      hash: md5
+      md5: 5620c04111851859455ac0bf83074f2e
+      size: 3414
+    params:
+      params.yaml:
+        base.seed: 42
+        train:
+          model_type: MLPClassifier
+          hidden_layer_sizes:
+          - 150
+          - 100
+          - 50
+          max_iter: 1000
+          activation: relu
+          solver: adam
+          random_state: 42
+    outs:
+    - path: metrics.json
+      hash: md5
+      md5: 354bf16174ce36ae898245642a458c0d
+      size: 25
+    - path: models/model.pkl
+      hash: md5
+      md5: 3492ec0f9e1b82f0bef2602c9185db5c
+      size: 527011

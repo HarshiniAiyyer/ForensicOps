@@ -1,0 +1,25 @@
+stages:
+  prepare:
+    cmd: python src/prepare.py
+    deps:
+    - data/raw/states.csv
+    - src/prepare.py
+    params:
+    - base.seed
+    - prepare.split
+    outs:
+    - data/processed/train.csv
+    - data/processed/val.csv
+  train:
+    cmd: python src/train.py
+    deps:
+    - data/processed/train.csv
+    - data/processed/val.csv
+    - src/train.py
+    params:
+    - base.seed
+    - train
+    outs:
+    - models/model.pkl
+    metrics:
+    - metrics.json

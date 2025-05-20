@@ -1,0 +1,49 @@
+PART 1: COMMANDS FOR WSL AND INSTALL AIRFLOW MLFLOW ETC IN UBUNTU
+
+cd ~
+
+sudo apt update && sudo apt upgrade -y
+sudo apt update
+sudo apt install python3-venv -y
+
+# Create and activate Python virtual environment
+# First, ensure you have the required packages
+sudo apt update
+sudo apt install python3-venv -y
+
+# Create a new virtual environment
+python3 -m venv myenv
+
+# Activate the virtual environment
+source myenv/bin/activate
+
+# Verify the environment is activated (you should see (myenv) in your prompt)
+# Now you can install packages in your virtual environment
+pip install --upgrade pip
+
+# To deactivate the virtual environment when you're done
+# deactivate
+
+pip install mlflow apache-airflow pandas scikit-learn
+
+
+## to Check where airflow has been installed
+cd /
+cd mnt
+
+#now
+which airflow
+cd ~/airflow
+
+#changing path??
+cd~
+
+#initializing bash script
+nano ~/.bashrc
+
+
+
+PART 2: COMMANDS FOR WINDOWS (VIRTUAL ENVIRONMENT etc.)
+
+python -m venv my
+.\my\Scripts\activate

@@ -1,0 +1,21 @@
+git init
+python -m dvc init
+
+
+python -m dvc add states.csv
+
+- ADD TO GITIGNORE. TO NOT BE VERSION CONTROLLED BY GIT
+git add states.csv.dvc .gitignore
+
+- COMMIT TO GIT
+git commit -m "track data"
+
+-MAKE A CHANGE TO THE DATA, AND RUN IT NORMALLY
+python mod2.py
+
+- WHAT IF I WANT THE PREVIOUS VERSION OF THE DATA I MODIFIED?
+git checkout
+python -m dvc pull --force
+
+-WHAT IF I AM LOOKING FOR THE THIRD VERSION OF THE COMMIT / EDIT I MADE
+git log

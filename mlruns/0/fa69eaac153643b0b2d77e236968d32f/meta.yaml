@@ -1,0 +1,16 @@
+artifact_uri: file:///D:/yea/mlruns/0/fa69eaac153643b0b2d77e236968d32f/artifacts
+deleted_time: 1747504292609
+end_time: 1747503769723
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: deleted
+run_id: fa69eaac153643b0b2d77e236968d32f
+run_name: trusting-skink-228
+run_uuid: fa69eaac153643b0b2d77e236968d32f
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1747503769584
+status: 4
+tags: []
+user_id: harsh

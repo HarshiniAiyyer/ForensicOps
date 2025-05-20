@@ -1,0 +1,16 @@
+artifact_uri: file:///D:/yea/mlruns/0/b5ca0f01db2b4cb6a87aafdc4db6a4be/artifacts
+deleted_time: 1747504292610
+end_time: 1747502764750
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: deleted
+run_id: b5ca0f01db2b4cb6a87aafdc4db6a4be
+run_name: judicious-bee-919
+run_uuid: b5ca0f01db2b4cb6a87aafdc4db6a4be
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1747502764639
+status: 4
+tags: []
+user_id: harsh
