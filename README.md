@@ -2,8 +2,12 @@
 
 An end-to-end MLOps solution for detecting financial anomalies in health insurance claims using Benford's Law and machine learning.
 
-## 🎯 Core Objective
-Detect financial anomalies and potential fraud in health insurance claims by combining statistical analysis (Benford's Law) with machine learning techniques.
+## 🎯 Core Objective and Project Overview
+- This MLOps project implements a forensic audit system for healthcare insurance coverage data under the Affordable Care Act (ACA). The system combines statistical analysis (Benford's Law) and ML techniques to detect potential anomalies and patterns in healthcare enrollment data across US states. 
+
+- By analyzing changes in insurance coverage rates, enrollment numbers, and program participation before and after the ACA implementation, the project helps identify potential irregularities and provides insights into the effectiveness of healthcare reforms.
+
+- This project implements a Machine Learning Operations (MLOps) pipeline for financial data analysis and model training.Detect financial anomalies and potential fraud in health insurance claims by combining statistical analysis (Benford's Law) with machine learning techniques.
 
 ## 📐 System Architecture
 
