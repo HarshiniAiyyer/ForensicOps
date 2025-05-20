@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Has your state implemented Medicaid?</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            padding: 20px;
+            background-color: #f8f9fa;
+        }
+        .container {
+            max-width: 800px;
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        #result {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 5px;
+            display: none;
+        }
+        .prediction-yes {
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        .prediction-no {
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-center mb-4">Has your state implemented Medicaid?</h1>
+        <form id="predictionForm">
+            {% for feature in features %}
+            <div class="form-group">
+                <label for="{{ feature }}">{{ display_names[feature] }}</label>
+                <input type="number" step="any" class="form-control" id="{{ feature }}" name="{{ feature }}" required 
+                       placeholder="Enter a value">
+            </div>
+            {% endfor %}
+            <button type="submit" class="btn btn-primary w-100">Predict</button>
+        </form>
+        <div id="result" class="alert"></div>
+    </div>
+
+    <script>
+        // Function to save form values to localStorage
+        function saveFormValues() {
+            const form = document.getElementById('predictionForm');
+            const formData = new FormData(form);
+            const values = {};
+            for (let [key, value] of formData.entries()) {
+                values[key] = value;
+            }
+            localStorage.setItem('medicaidFormValues', JSON.stringify(values));
+        }
+
+        // Function to load form values from localStorage
+        function loadFormValues() {
+            const savedValues = localStorage.getItem('medicaidFormValues');
+            if (savedValues) {
+                const values = JSON.parse(savedValues);
+                for (const [key, value] of Object.entries(values)) {
+                    const input = document.getElementById(key);
+                    if (input) {
+                        input.value = value;
+                    }
+                }
+            }
+        }
+
+        // Load saved values when the page loads
+        document.addEventListener('DOMContentLoaded', loadFormValues);
+
+        // Save values when the form is submitted
+        document.getElementById('predictionForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const formData = new FormData(e.target);
+            
+            try {
+                const response = await fetch('/predict', {
+                    method: 'POST',
+                    body: formData
+                });
+                const data = await response.json();
+                
+                const resultDiv = document.getElementById('result');
+                if (data.error) {
+                    resultDiv.className = 'alert alert-danger';
+                    resultDiv.textContent = 'Error: ' + data.error;
+                } else {
+                    if (data.prediction.includes('has been implemented')) {
+                        resultDiv.className = 'alert prediction-yes';
+                    } else {
+                        resultDiv.className = 'alert prediction-no';
+                    }
+                    resultDiv.textContent = data.prediction;
+                }
+                resultDiv.style.display = 'block';
+
+                // Save the form values after successful prediction
+                saveFormValues();
+            } catch (error) {
+                console.error('Error:', error);
+                const resultDiv = document.getElementById('result');
+                resultDiv.className = 'alert alert-danger';
+                resultDiv.textContent = 'An error occurred while making the prediction.';
+                resultDiv.style.display = 'block';
+            }
+        });
+
+        // Save values when any input changes
+        document.querySelectorAll('input').forEach(input => {
+            input.addEventListener('change', saveFormValues);
+        });
+    </script>
+</body>
+</html> 
