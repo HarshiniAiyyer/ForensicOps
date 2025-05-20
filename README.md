@@ -34,7 +34,7 @@ graph TD
     end
 
     subgraph Frontend
-        P[Streamlit Dashboard] -->|Query| Q[API]
+        P[Streamlit Dashboard] -->|Query| Q[Data]
     end
 
     H --> Q
