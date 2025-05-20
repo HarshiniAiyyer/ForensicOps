@@ -1,5 +1,19 @@
 # ForensicOps: Forensic Auditing for Health Insurance 
 
+[![Python Version](https://img.shields.io/badge/python-3.9%20%7C%203.10%20%7C%203.11-blue)](https://www.python.org/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
+[![Tests](https://github.com/HarshiniAiyyer/ForensicOps/actions/workflows/ci-cd.yml/badge.svg)](https://github.com/HarshiniAiyyer/ForensicOps/actions)
+[![Documentation Status](https://readthedocs.org/projects/forensicops/badge/?version=latest)](https://forensicops.readthedocs.io/en/latest/?badge=latest)
+[![Code Coverage](https://codecov.io/gh/HarshiniAiyyer/ForensicOps/branch/main/graph/badge.svg?token=YOUR-TOKEN-HERE)](https://codecov.io/gh/HarshiniAiyyer/ForensicOps)
+[![Docker Pulls](https://img.shields.io/docker/pulls/harshiniaiyyer/forensicops)](https://hub.docker.com/r/harshiniaiyyer/forensicops)
+[![GitHub stars](https://img.shields.io/github/stars/HarshiniAiyyer/ForensicOps?style=social)](https://github.com/HarshiniAiyyer/ForensicOps/stargazers)
+
+<div align="center">
+  <img src="https://raw.githubusercontent.com/HarshiniAiyyer/ForensicOps/main/docs/_static/forensicops-sticker.png" alt="ForensicOps Sticker" width="200">
+</div>
+
+
 An end-to-end MLOps solution for detecting financial anomalies in health insurance claims using Benford's Law and machine learning.
 
 ## 🎯 Core Objective and Project Overview
